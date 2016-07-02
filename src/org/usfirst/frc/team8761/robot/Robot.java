@@ -58,8 +58,11 @@ public class Robot extends IterativeRobot {
      * This function is run once each time the robot enters autonomous mode
      */
     public void autonomousInit() {
+
         autoLoopCounter = 0;
+
     }
+
 
     /**
      * This function is called periodically during autonomous
