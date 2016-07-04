@@ -37,11 +37,24 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/wpilib/user/lib" />
+          <root url="file://$USER_HOME$/wpilib/java/current/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/wpilib/java/current/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/wpilib/java/current/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/wpilib/java/current/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Dropbox/Bridge Configuration Utility/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/wpilib/user/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Dropbox/Bridge Configuration Utility/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

@@ -29,7 +29,9 @@ public class Vision {
 
     public int shoot()
     {
-        Flywheel.enable();
+        //Flywheel.enable(1.00);
+
+        return 0;
     }
 
 }
