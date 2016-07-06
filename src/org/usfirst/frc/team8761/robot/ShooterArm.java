@@ -1,9 +1,22 @@
 package org.usfirst.frc.team8761.robot;
+import edu.wpi.first.wpilibj.Spark;
 
-/**
- * Created by jiahpang on 1/07/2016.
- */
 public class ShooterArm {
 
-    //This is for the shooting arm
+    Spark ShooterArmSpark;
+
+    public void init(){
+        ShooterArmSpark = new Spark(3);
+
+    }
+
+    public void lower(double speed){
+        ShooterArmSpark.set(speed);
+    }
+    public void raise(double speed){
+        ShooterArmSpark.set(-speed);
+    }
+    public void stop() {
+        ShooterArmSpark.set(0);
+    }
 }

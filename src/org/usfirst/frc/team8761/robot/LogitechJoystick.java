@@ -31,7 +31,7 @@ public class LogitechJoystick extends DriveControl{
      *
      * @param robot
      */
-    private void drivingCommands( Robot robot ) {
+    private void drivingCommands(Robot robot) {
         //myRobot.arcadeDrive(stick);
         double side = stick.getX();
         double speed = stick.getY();
@@ -60,5 +60,53 @@ public class LogitechJoystick extends DriveControl{
         robot.drive(leftMotorPower, rightMotorPower);
 //        robot.drive(.5, -.5);
   }
+    private void scoopMovements(Robot robot){
+        if (stick.getRawButton(12) == true)  // button 12 is pressed
+        {
+            //driver wants to raise the scoop
+            robot.raiseScoop();
+        }
+        // see if driver wants to lower the scoop
+        else if (stick.getRawButton(11) == true) // Button 11 is pressed
+        {
+            // driver wants to lower the arm
+            robot.lowerScoop();
+        }
+        else //no button is pressed
+        {
+            // the driver has no arm movement commands to process
+            robot.stopScoop();
+        }
+    }
+    private void flywheelMovements(Robot robot)    {
+        if (stick.getRawButton(1) == true)  // button 1 is pressed
+        {
+            //driver wants to trigger the flywheels
+            robot.flywheelGo(0.5);
+
+        }
+        else //no button is pressed
+        {
+            // the driver has no arm movement commands to process
+            robot.flywheelStop();
+        }
+    }
+    private void shooterArmMovements(Robot robot) {
+        if (stick.getRawButton(6) == true)  // button 1 is pressed
+        {
+            //driver wants to lower the shooter
+            robot.lowerShooter(0.5);
+
+        }
+        else if (stick.getRawButton(7) == true) {
+            //driver wants to raise the shooter
+            robot.raiseShooter(0.5);
+        }
+        else //no button is pressed
+        {
+            // the driver has no arm movement commands to process
+            robot.stopShooter();
+        }
+    }
 
 }

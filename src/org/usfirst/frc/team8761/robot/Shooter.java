@@ -25,7 +25,6 @@ public class Shooter {
         armMC = new Spark(3);
 
     }
-
     public void teleopInit()
     {
         flyWheelMC.set(1);

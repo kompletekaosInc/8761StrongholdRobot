@@ -20,9 +20,10 @@ public class Robot extends IterativeRobot {
     static final Logger LOG = LoggerFactory.getLogger(Robot.class);
 
 
-
     private Drivetrain drivetrain;
-    private Shooter shooter;
+    private Scoop scoop;
+    private Flywheel flywheel;
+    private ShooterArm shooterArm;
     private CameraServer camera1;
     private org.usfirst.frc.team8761.robot.DriverStation driverStation;
 
@@ -39,7 +40,9 @@ public class Robot extends IterativeRobot {
         LOG.info("robotInit: BEGIN");
 
         drivetrain = new Drivetrain();
-        shooter = new Shooter();
+        scoop = new Scoop();
+        flywheel = new Flywheel();
+        shooterArm = new ShooterArm();
 
         try {
             camera1 = CameraServer.getInstance();
@@ -84,14 +87,13 @@ public class Robot extends IterativeRobot {
 
         LOG.info("teleopInit: BEGIN");
         LOG.info("teleopInit: END");
-        shooter.teleopInit();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-       driverStation.control(this);
+        driverStation.control(this);
 
     }
 
@@ -110,16 +112,51 @@ public class Robot extends IterativeRobot {
      * @param name
      * @param value
      */
-    public static void displayValue( String name, Object value )
-    {
+    public static void displayValue(String name, Object value) {
         SmartDashboard.putString(name, value.toString());
         LOG.debug("[" + name + ":" + value + "]");
     }
 
 
-
-    public void drive(double left, double right)
-    {
+    public void drive(double left, double right) {
         drivetrain.drive(left, right);
     }
+
+    public void raiseScoop() {
+        scoop.raise();
+    }
+
+    public void lowerScoop() {
+        scoop.lower();
+    }
+
+    public void stopScoop() {
+        scoop.stop();
+    }
+    public void flywheelGo(double speed) {
+        flywheel.go(speed);
+    }
+
+    public void flywheelStop() {
+        flywheel.stop();
+    }
+
+    public void raiseShooter(double speed) {
+        shooterArm.raise(speed);
+    }
+
+    public void lowerShooter(double speed) {
+        shooterArm.lower(speed);
+    }
+
+    public void stopShooter() {
+        shooterArm.stop();
+    }
+    /*public void resetGyro() {
+        drivetrain.resetGyro();
+    }
+
+    public double getGyroReading() {
+        return drivetrain.getGyroAngle();
+    }*/
 }

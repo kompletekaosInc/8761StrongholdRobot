@@ -1,22 +1,19 @@
 package org.usfirst.frc.team8761.robot;
 import edu.wpi.first.wpilibj.Spark;
 
-/**
- * Created by jiahpang on 1/07/2016.
- */
-
-
 public class Flywheel {
 
-    Spark flywheelSpark;
+    Spark FlywheelSpark;
 
     public void init(){
-        flywheelSpark = new Spark(2);
+        FlywheelSpark = new Spark(3);
 
     }
 
-    public void enable(double speed){
-        flywheelSpark.set(speed );
-
+    public void go(double speed){
+        FlywheelSpark.set(speed);
+    }
+    public void stop() {
+        FlywheelSpark.set(0);
     }
 }
