@@ -1,13 +1,12 @@
 package org.usfirst.frc.team8761.robot;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.CameraServer;
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -19,7 +18,8 @@ public class Robot extends IterativeRobot {
 
     static final Logger LOG = LoggerFactory.getLogger(Robot.class);
 
-
+    private final NetworkTable grip = NetworkTable.getTable("vision");
+    private double[] gripValues;
     private Drivetrain drivetrain;
     private Scoop scoop;
     private Flywheel flywheel;
@@ -131,6 +131,15 @@ public class Robot extends IterativeRobot {
     }
     public void stopShooter() {
         shooterArm.stop();
+    }
+    public void shoot()
+    {
+        vision.shoot();
+    }
+
+    public void getValues(NetworkTable vision)
+    {
+        gripValues = grip.getNumberArray("targets/area", gripValues);
     }
 
 }

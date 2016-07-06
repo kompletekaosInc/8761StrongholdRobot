@@ -110,5 +110,9 @@ public class LogitechJoystick extends DriveControl{
             robot.stopShooter();
         }
     }
+    private void shoot(Robot robot)
+    {
+        robot.shoot();
+    }
 
 }
