@@ -26,10 +26,8 @@ public class Robot extends IterativeRobot {
     private ShooterArm shooterArm;
     private CameraServer camera1;
     private org.usfirst.frc.team8761.robot.DriverStation driverStation;
+    Auto1 auto1;
 
-
-    // loop counter for measuring autonomous iterations.
-    int autoLoopCounter;
 
 
     /**
@@ -46,7 +44,7 @@ public class Robot extends IterativeRobot {
 
         try {
             camera1 = CameraServer.getInstance();
-            camera1.setQuality(50);
+            camera1.setQuality(30);
             camera1.startAutomaticCapture("cam0");
         } catch (Exception e) {
             LOG.error("Camera not installed correctly", e);
@@ -61,23 +59,14 @@ public class Robot extends IterativeRobot {
      * This function is run once each time the robot enters autonomous mode
      */
     public void autonomousInit() {
-
-        autoLoopCounter = 0;
-
+        auto1 = new Auto1(this);
+        shooterArm.stop();
     }
-
-
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        if (autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
-        {
-            //myRobot.drive(-0.5, 0.0);    // drive forwards half speed
-            autoLoopCounter++;
-        } else {
-            //myRobot.drive(0.0, 0.0);    // stop robot
-        }
+        auto1.doAutonomous();
     }
 
     /**
@@ -94,7 +83,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         driverStation.control(this);
-
+        shooterArm.checkLimitSwitches();
     }
 
 
@@ -116,47 +105,32 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putString(name, value.toString());
         LOG.debug("[" + name + ":" + value + "]");
     }
-
-
     public void drive(double left, double right) {
         drivetrain.drive(left, right);
     }
-
     public void raiseScoop() {
         scoop.raise();
     }
-
     public void lowerScoop() {
         scoop.lower();
     }
-
     public void stopScoop() {
         scoop.stop();
     }
     public void flywheelGo(double speed) {
         flywheel.go(speed);
     }
-
     public void flywheelStop() {
         flywheel.stop();
     }
-
     public void raiseShooter(double speed) {
         shooterArm.raise(speed);
     }
-
     public void lowerShooter(double speed) {
         shooterArm.lower(speed);
     }
-
     public void stopShooter() {
         shooterArm.stop();
     }
-    /*public void resetGyro() {
-        drivetrain.resetGyro();
-    }
 
-    public double getGyroReading() {
-        return drivetrain.getGyroAngle();
-    }*/
 }

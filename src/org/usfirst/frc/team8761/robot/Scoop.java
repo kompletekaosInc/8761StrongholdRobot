@@ -6,12 +6,8 @@ public class Scoop {
 
     private Spark scoopMC = null;
 
-    public void Arm() {
+    public Scoop(){
         scoopMC = new Spark(9);
-    }
-
-    public void init(){
-
     }
 
     public void lower(){

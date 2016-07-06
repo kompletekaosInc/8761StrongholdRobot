@@ -21,7 +21,9 @@ public class LogitechJoystick extends DriveControl{
      */
     public void giveCommands(Robot robot) {
         drivingCommands(robot);
-        //armMovements(robots);
+        scoopMovements(robot);
+        flywheelMovements(robot);
+        shooterArmMovements(robot);
 
     }
 

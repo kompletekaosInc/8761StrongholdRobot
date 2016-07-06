@@ -3,17 +3,16 @@ import edu.wpi.first.wpilibj.Spark;
 
 public class Flywheel {
 
-    Spark FlywheelSpark;
+    private Spark flywheelSpark;
 
-    public void init(){
-        FlywheelSpark = new Spark(3);
-
+    public Flywheel(){
+        flywheelSpark = new Spark(3);
     }
 
     public void go(double speed){
-        FlywheelSpark.set(speed);
+        flywheelSpark.set(speed);
     }
     public void stop() {
-        FlywheelSpark.set(0);
+        flywheelSpark.set(0);
     }
 }

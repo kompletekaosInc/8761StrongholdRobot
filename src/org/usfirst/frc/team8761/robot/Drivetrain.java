@@ -40,6 +40,7 @@ public class Drivetrain {
             Robot.displayValue("Gyro Installed", "yes");
 
         } catch (Exception e) {
+            gyro = null;
             LOG.error("Gyro not installed correctly", e);
             Robot.displayValue("Gyro Installed", "no");
         }

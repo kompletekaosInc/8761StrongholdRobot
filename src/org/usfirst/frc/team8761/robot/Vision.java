@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class Vision {
 
-    static final Logger LOG = LoggerFactory.getLogger(Drivetrain.class);
+    static final Logger LOG = LoggerFactory.getLogger(Vision.class);
 
     int width;
     int height;
